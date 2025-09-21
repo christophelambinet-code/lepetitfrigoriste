@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>2BP IDFCA - Le Petit Frigoriste</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: black;
+      background-image: url('images/fond-2bp.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      display: flex;
+      flex-direction: row;
+      color: #e0f7ff;
+    }
+
+    .sidebar-left, .sidebar-right {
+      width: 18%;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 5px;
+      gap: 8px;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+
+    header {
+      text-align: center;
+      padding: 8px;
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: 1.8em;
+      color: #00aaff;
+      text-shadow: 0 0 10px #00aaff;
+      margin: 0;
+    }
+
+    .tab-button, .return-button, .resource-button {
+      width: 60%;
+      padding: 4px 10px;
+      background: linear-gradient(145deg, #0077cc, #002244);
+      color: #e0f7ff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 8px #00aaff;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      font-size: 0.85em;
+    }
+
+    .tab-button:hover, .return-button:hover, .resource-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 16px #00aaff;
+    }
+
+    .tab-content {
+      display: none;
+      background-color: rgba(0, 17, 34, 0.3);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00aaff;
+      width: 90%;
+      max-width: 700px;
+      margin-bottom: 15px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar-left, .sidebar-right {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .main {
+        width: 100%;
+        padding: 10px;
+      }
+    }
+  </style>
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</head>
+<body>
+  <!-- Onglets à gauche -->
+  <div class="sidebar-left">
+    <button class="tab-button" onclick="showTab('cours')">Cours</button>
+    <button class="tab-button" onclick="showTab('exercices')">Exercices</button>
+    <button class="tab-button" onclick="showTab('videos')">Vidéos</button>
+  </div>
+
+  <!-- Contenu central -->
+  <div class="main">
+    <header>
+      <h1>2BP IDFCA</h1>
+    </header>
+
+    <div id="cours" class="tab-content active">
+     <a href="cours/2bp/2bpidfcapressostat.pdf" target="_blank" class="resource-button">📘 Pressostats – Fiche Synthèse 2BP</a>
+ <!-- Aucun cours affiché pour le moment -->
+    </div>
+
+    <div id="exercices" class="tab-content">
+      <!-- Aucun exercice affiché pour le moment -->
+    </div>
+
+    <div id="videos" class="tab-content">
+      <!-- Aucune vidéo affichée pour le moment -->
+    </div>
+  </div>
+
+  <!-- Bouton retour à droite -->
+  <div class="sidebar-right">
+    <a href="index.html" class="return-button">← Accueil</a>
+  </div>
+</body>
+</html>
