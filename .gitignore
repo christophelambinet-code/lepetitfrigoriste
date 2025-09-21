@@ -416,3 +416,28 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+# 👉 Visual Studio Code
+.vscode/
+*.code-workspace
+
+# 👉 Fichiers système (macOS et Windows)
+.DS_Store
+Thumbs.db
+
+# 👉 Fichiers temporaires et logs
+*.log
+*.tmp
+
+# 👉 Dossiers de build ou de cache (si utilisés)
+dist/
+build/
+node_modules/
+
+# 👉 Fichiers sensibles (si tu ajoutes des clés ou mots de passe)
+.env
+.env.local
+
+# 👉 Autres fichiers à ignorer (si tu utilises GitHub Pages)
+.sass-cache/
+.jekyll-cache/
+_site/
