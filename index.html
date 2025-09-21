@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -120,3 +121,127 @@
   </div>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Le Petit Frigoriste</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 2em;
+      color: #00aaff;
+      text-shadow: 0 0 10px #00aaff;
+      margin: 0;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+    }
+
+    .side {
+      width: 20%;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .center {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+    }
+
+    .center img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .button {
+      padding: 15px 25px;
+      background: linear-gradient(145deg, #0077cc, #002244);
+      color: #e0f7ff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00aaff;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 80%;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00aaff;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+      }
+
+      .side {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .center {
+        width: 100%;
+      }
+
+      .button {
+        width: auto;
+        font-size: 0.9em;
+        padding: 10px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenue sur Le Petit Frigoriste</h1>
+  </header>
+
+  <div class="main">
+    <div class="side">
+      <a href="1bp-idfca.html" class="button">1BP IDFCA</a>
+      <a href="2bp-idfca.html" class="button">2BP IDFCA</a>
+    </div>
+
+    <div class="center">
+      <img src="images/subzero-accueil.jpg" alt="Subzero Accueil">
+    </div>
+
+    <div class="side">
+      <a href="cs-tenr.html" class="button">CS TENR</a>
+      <a href="titre-pro-cvc.html" class="button">TITRE PRO CVC</a>
+    </div>
+  </div>
+</body>
+</html>
+>>>>>>> 05c6c73 (ajout de Lines)
