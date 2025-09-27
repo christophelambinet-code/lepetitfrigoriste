@@ -5,7 +5,12 @@
     "videos": []
   },
   "2bp": {
-    "cours": [],
+    "cours": [
+      {
+        "nom": "📘 Pressostats – Fiche Synthèse 2BP",
+        "fichier": "cours/2bp/2bpidfcapressostat.pdf"
+      }
+    ],
     "exercices": [],
     "videos": []
   },
@@ -20,4 +25,3 @@
     "videos": []
   }
 }
-
