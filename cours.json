@@ -1,6 +1,11 @@
 {
   "1bp": {
-    "cours": [],
+    "cours": [
+      {
+        "nom": "📘 le schéma frigorifique – Fiche Synthèse 2BP",
+        "fichier": "cours/1bp/1bpidfcaleSchémafrigorifique.pdf"
+        }
+    ],
     "exercices": [],
     "videos": []
   },
