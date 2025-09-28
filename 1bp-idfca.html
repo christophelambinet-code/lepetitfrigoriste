@@ -11,14 +11,30 @@ html, body {
   height: 100vh;
   font-family: 'Segoe UI', sans-serif;
   background-color: black;
-  display: flex;
   color: #e0f7ff;
   overflow: hidden;
+  position: relative;
 }
 
-/* Colonne gauche : Accueil en haut, puis onglets */
+/* Image centrée au milieu */
+.center-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.center-image img {
+  max-width: 60vw;
+  height: auto;
+}
+
+/* Bande noire gauche */
 .sidebar-left {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 18%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,22 +43,13 @@ html, body {
   gap: 10px;
 }
 
-/* Image centrée */
-.center-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.center-image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-/* Colonne droite : cours */
+/* Bande noire droite */
 .sidebar-right {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 18%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding: 20px 5px;
@@ -50,10 +57,10 @@ html, body {
   overflow-y: auto;
 }
 
-/* Boutons et liens */
+/* Boutons */
 .tab-button, .return-button, .resource-button {
   width: 100%;
-  padding: 8px 12px;
+  padding: 6px 12px;
   background: linear-gradient(145deg,#0077cc,#002244);
   color: #e0f7ff;
   border: none;
@@ -88,7 +95,6 @@ html, body {
   flex-direction: column;
   gap: 5px;
 }
-
 </style>
 
 <script>
@@ -108,7 +114,7 @@ async function chargerCours(formation){
       container.innerHTML = '';
       const items = data[formation][section];
       if(items.length === 0){
-        container.innerHTML = '<p>Aucun '+section+' disponible pour le moment.</p>';
+        container.innerHTML = '<p>Aucun '+section+' disponible.</p>';
         return;
       }
       const ul = document.createElement('ul');
@@ -137,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </head>
 
 <body>
-  <!-- Bande noire gauche : Accueil puis onglets -->
+  <!-- Bande noire gauche -->
   <div class="sidebar-left">
     <a href="index.html" class="return-button">← Accueil</a>
     <button class="tab-button" onclick="showTab('cours')">Cours</button>
@@ -150,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <img src="images/fond-1bp.jpg" alt="Fond 1BP">
   </div>
 
-  <!-- Bande noire droite : cours -->
+  <!-- Bande noire droite -->
   <div class="sidebar-right">
     <div id="cours" class="tab-content active"></div>
     <div id="exercices" class="tab-content"></div>
