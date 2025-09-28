@@ -8,35 +8,48 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
   font-family: 'Segoe UI', sans-serif;
   background-color: black;
   color: #e0f7ff;
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image centrale */
+.main {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 18%;
+  right: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Sidebar gauche */
 .sidebar-left {
-  position: fixed;
+  position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   width: 18%;
-  height: 100%;
   background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px 5px;
   gap: 10px;
-  z-index: 10;
 }
 
 /* Sidebar droite */
 .sidebar-right {
-  position: fixed;
+  position: absolute;
   top: 0;
+  bottom: 0;
   right: 0;
   width: 18%;
-  height: 100%;
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -44,23 +57,6 @@ html, body {
   padding: 20px 5px;
   gap: 10px;
   overflow-y: auto;
-}
-
-/* Contenu central */
-.main {
-  margin-left: 18%;
-  margin-right: 18%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Image centrale */
-.main img {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* Header */
@@ -107,6 +103,8 @@ header h1 {
   padding: 10px;
   border-radius: 8px;
   width: 100%;
+  max-height: 80%;
+  overflow-y: auto;
 }
 .tab-content.active {
   display: block;
@@ -121,31 +119,29 @@ header h1 {
 }
 
 /* Responsive mobile */
-@media(max-width:768px){
+@media(max-width:768px) {
   html, body {
+    overflow: auto; /* permet de scroller la page entière */
     height: auto;
-    overflow-x: hidden;
   }
-  .sidebar-left, .sidebar-right {
+  .sidebar-left, .sidebar-right, .main {
     position: relative;
     width: 100%;
-    height: auto;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
   }
-  .main {
-    margin: 0;
-    width: 100%;
-    padding: 10px 0;
-    overflow-y: visible;
+  .sidebar-left, .sidebar-right {
+    gap: 5px;
   }
   .main img {
     max-width: 90%;
-    height: auto;
+    max-height: 40vh;
+    margin-bottom: 10px;
   }
-  .tab-content {
+  .sidebar-right {
     max-height: none;
+    overflow-y: visible;
   }
 }
 </style>
@@ -176,7 +172,7 @@ async function chargerCours(formation){
         a.href = './' + item.fichier;
         a.className = 'resource-button';
         a.setAttribute('download','');
-        a.textContent = item.nom;
+        a.textContent = item.nom; // JSON contient déjà l'icône
         li.appendChild(a);
         ul.appendChild(li);
       });
@@ -195,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </head>
 <body>
 
-<!-- Sidebar gauche -->
+<!-- Sidebar gauche : Accueil + onglets -->
 <div class="sidebar-left">
   <a href="index.html" class="return-button">← Accueil</a>
   <button class="tab-button" onclick="showTab('cours')">Cours</button>
@@ -203,17 +199,17 @@ document.addEventListener('DOMContentLoaded', () => {
   <button class="tab-button" onclick="showTab('videos')">Vidéos</button>
 </div>
 
-<!-- Contenu central -->
+<!-- Image centrale -->
 <div class="main">
-  <header><h1>1BP IDFCA</h1></header>
   <img src="./images/fond-1bp.jpg" alt="Fond 1BP">
+</div>
+
+<!-- Sidebar droite : cours -->
+<div class="sidebar-right">
   <div id="cours" class="tab-content active"></div>
   <div id="exercices" class="tab-content"></div>
   <div id="videos" class="tab-content"></div>
 </div>
-
-<!-- Sidebar droite -->
-<div class="sidebar-right"></div>
 
 </body>
 </html>
