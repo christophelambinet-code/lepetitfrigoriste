@@ -5,13 +5,13 @@
 <title>TITRE PRO CVC - Le Petit Frigoriste</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: black;
-  color: #e0f7ff;
+html, body { 
+  margin: 0; 
+  padding: 0; 
+  height: 100%; 
+  font-family: 'Segoe UI', sans-serif; 
+  background-color: black; 
+  color: #e0f7ff; 
   overflow: hidden;
   position: relative;
 }
@@ -74,7 +74,7 @@ header h1 {
   margin: 0;
 }
 
-/* Boutons */
+/* Boutons et liens */
 .tab-button, .return-button, .resource-button {
   width: 90%;
   max-width: 120px;
@@ -126,6 +126,13 @@ header h1 {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+    max-height: none;
+    overflow: visible;
+  }
+  .tab-content {
+    max-height: none;
+    overflow: visible;
+    width: 90%;
   }
   .main {
     position: relative;
@@ -165,12 +172,10 @@ async function chargerCours(formation){
       items.forEach(item => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-
         a.href = './' + item.fichier;
         a.className = 'resource-button';
         a.setAttribute('download','');
         a.textContent = item.nom;
-
         li.appendChild(a);
         ul.appendChild(li);
       });
@@ -199,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- Image centrale -->
 <div class="main">
-  <img src="./images/fond-cvc.jpg" alt="Fond CVC">
+  <img src="./images/fond-cvc.jpg" alt="Fond TITRE PRO CVC">
 </div>
 
 <!-- Sidebar droite : cours -->
