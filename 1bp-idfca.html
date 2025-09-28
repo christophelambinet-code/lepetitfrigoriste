@@ -12,44 +12,43 @@ html, body {
   font-family: 'Segoe UI', sans-serif;
   background-color: black;
   color: #e0f7ff;
-  overflow: hidden;
-  position: relative;
+  overflow-y: auto; /* Permet le scroll sur mobile */
+  box-sizing: border-box;
 }
 
 /* Image centrale */
 .main {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 18%;
-  right: 18%;
+  margin-left: 18%;
+  margin-right: 18%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px 0;
 }
 
 /* Sidebar gauche */
 .sidebar-left {
-  position: absolute;
+  position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
   width: 18%;
+  height: 100%;
   background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px 5px;
   gap: 10px;
+  overflow-y: auto;
 }
 
 /* Sidebar droite */
 .sidebar-right {
-  position: absolute;
+  position: fixed;
   top: 0;
-  bottom: 0;
   right: 0;
   width: 18%;
+  height: 100%;
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -74,7 +73,7 @@ header h1 {
   margin: 0;
 }
 
-/* Boutons */
+/* Boutons et liens */
 .tab-button, .return-button, .resource-button {
   width: 90%;
   max-width: 120px;
@@ -103,8 +102,6 @@ header h1 {
   padding: 10px;
   border-radius: 8px;
   width: 100%;
-  max-height: 80%;
-  overflow-y: auto;
 }
 .tab-content.active {
   display: block;
@@ -118,40 +115,25 @@ header h1 {
   gap: 5px;
 }
 
-/* Responsive pour mobile */
+/* Responsive */
 @media(max-width:768px) {
-  html, body {
-    height: auto;
-    overflow: auto;
-  }
-  body {
-    flex-direction: column;
-  }
-  .sidebar-left, .sidebar-right {
+  .sidebar-left, .sidebar-right, .main {
     position: relative;
     width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-height: none;
-    overflow: visible;
-    margin-bottom: 10px;
+    margin: 0;
+    padding: 10px;
   }
   .main {
-    position: relative;
-    left: auto;
-    right: auto;
-    margin: 10px 0;
+    margin-top: 10px;
   }
   .main img {
-    max-width: 90%;
-    max-height: 60vh;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
   }
   .tab-content {
-    max-height: none;
-    overflow: visible;
-    width: 90%;
-    margin-bottom: 20px;
+    max-height: none; /* Plus de limitation de hauteur */
   }
 }
 </style>
@@ -182,7 +164,7 @@ async function chargerCours(formation){
         a.href = './' + item.fichier;
         a.className = 'resource-button';
         a.setAttribute('download','');
-        a.textContent = item.nom; // JSON contient déjà l'icône
+        a.textContent = item.nom; // icône gérée dans JSON
         li.appendChild(a);
         ul.appendChild(li);
       });
