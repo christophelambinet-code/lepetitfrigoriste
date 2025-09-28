@@ -16,7 +16,7 @@ html, body {
   position: relative;
 }
 
-/* Image centrale inchangée */
+/* Image centrale */
 .main {
   position: absolute;
   top: 0;
@@ -28,7 +28,7 @@ html, body {
   align-items: center;
 }
 
-/* Bande noire gauche */
+/* Sidebar gauche */
 .sidebar-left {
   position: absolute;
   top: 0;
@@ -43,7 +43,7 @@ html, body {
   gap: 10px;
 }
 
-/* Bande noire droite */
+/* Sidebar droite */
 .sidebar-right {
   position: absolute;
   top: 0;
@@ -74,7 +74,7 @@ header h1 {
   margin: 0;
 }
 
-/* Boutons et liens */
+/* Boutons */
 .tab-button, .return-button, .resource-button {
   width: 90%;
   max-width: 120px;
@@ -149,7 +149,8 @@ function showTab(tabId){
 
 async function chargerCours(formation){
   try{
-    const response = await fetch('cours.json');
+    // Chemin sûr pour GitHub Pages
+    const response = await fetch('./cours.json');
     const data = await response.json();
     if(!data[formation]) return;
 
@@ -165,11 +166,13 @@ async function chargerCours(formation){
       items.forEach(item => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.href = item.fichier;
+
+        // Chemin sûr pour GitHub Pages
+        a.href = './' + item.fichier;
         a.className = 'resource-button';
         a.setAttribute('download','');
 
-        // Afficher le nom tel quel (JSON contient déjà l'icône)
+        // Nom + icône déjà présent dans JSON
         a.textContent = item.nom;
 
         li.appendChild(a);
@@ -200,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- Image centrale -->
 <div class="main">
-  <img src="images/fond-1bp.jpg" alt="Fond 1BP">
+  <img src="./images/fond-1bp.jpg" alt="Fond 1BP">
 </div>
 
 <!-- Sidebar droite : cours -->
