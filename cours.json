@@ -2,35 +2,35 @@
   "1bp": {
     "cours": [
       {
-        "nom": "❄️ M3-la-Pression –1BP",
+        "nom": "❄️M3-la-Pression –1BP",
         "fichier": "cours/1bp/1bpidfcalapression.pdf"
       },
       {
-        "nom": "❄️ M3-la-Temperature –1BP",
+        "nom": "❄️M3-la-Temperature –1BP",
         "fichier": "cours/1bp/1b1bpidfcalatemperature.pdf"
       },
       {
-        "nom": "❄️ M3-la-Relation-Pression-Temperature –1BP",
+        "nom": "❄️M3-la-Relation-Pression-Temperature –1BP",
         "fichier": "cours/1bp/1bpidfcarelationpretem.pdf"
       },
       {
-        "nom": "❄️ M3-Le-Changement d'etat -1bp",
+        "nom": "❄️M3-Le-Changement d'etat -1bp",
         "fichier": "cours/1bp/1bpidfcachangementdetat.pdf"
       },
       {
-        "nom": "❄️ M3-Chaleur-Sensible-Latente –1BP",
+        "nom": "❄️M3-Chaleur-Sensible-Latente –1BP",
         "fichier": "cours/1bp/1bpidfcachaleursenslate.pdf"
       },
       {
-        "nom": "❄️ M3-Etat-du-fluide-dans-une-installation –1BP",
+        "nom": "❄️M3-Etat-du-fluide-dans-une-installation –1BP",
         "fichier": "cours/1bp/1bpidfcaetatduffdslinstall.pdf"
       },
       {
-        "nom": "❄️ M3-Schema-Frigorifique-de-base–1BP",
+        "nom": "❄️M3-Schema-Frigorifique-de-base–1BP",
         "fichier": "cours/1bp/1bpidfcaschemafrigobase.pdf"
       },
       {
-        "nom": "❄️ M3-Schema-Frigorifique-Symbole –1BP",
+        "nom": "❄️M3-Schema-Frigorifique-Symbole –1BP",
         "fichier": "cours/1bp/1bpidfcaschemafrigosymb.pdf"
       }
     ],
