@@ -5,13 +5,13 @@
 <title>TITRE PRO CVC - Le Petit Frigoriste</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-html, body { 
-  margin: 0; 
-  padding: 0; 
-  height: 100%; 
-  font-family: 'Segoe UI', sans-serif; 
-  background-color: black; 
-  color: #e0f7ff; 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: black;
+  color: #e0f7ff;
   overflow: hidden;
   position: relative;
 }
@@ -74,7 +74,7 @@ header h1 {
   margin: 0;
 }
 
-/* Boutons et liens */
+/* Boutons */
 .tab-button, .return-button, .resource-button {
   width: 90%;
   max-width: 120px;
@@ -118,33 +118,46 @@ header h1 {
   gap: 5px;
 }
 
-/* Responsive */
+/* Mobile : boutons en haut, image centrée, cours scrollable */
 @media(max-width:768px) {
-  .sidebar-left, .sidebar-right {
-    position: relative;
+  body {
+    display: block;
+    overflow-y: auto;
+  }
+
+  .sidebar-left {
     width: 100%;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    max-height: none;
-    overflow: visible;
-  }
-  .tab-content {
-    max-height: none;
-    overflow: visible;
-    width: 90%;
-  }
-  .main {
+    padding: 10px 0;
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    margin: 10px 0;
   }
+
+  .main {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
   .main img {
     max-width: 90%;
-    max-height: 60vh;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+
+  .sidebar-right {
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .tab-content {
+    width: 90%;
+    margin: 0 auto 15px auto;
   }
 }
 </style>

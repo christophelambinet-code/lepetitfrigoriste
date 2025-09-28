@@ -118,26 +118,46 @@ header h1 {
   gap: 5px;
 }
 
-/* Responsive */
+/* Mobile : boutons en haut, image centrée, cours scrollable */
 @media(max-width:768px) {
-  .sidebar-left, .sidebar-right {
-    position: relative;
+  body {
+    display: block;
+    overflow-y: auto;
+  }
+
+  .sidebar-left {
     width: 100%;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-  }
-  .main {
+    padding: 10px 0;
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    margin: 10px 0;
   }
+
+  .main {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
   .main img {
     max-width: 90%;
-    max-height: 60vh;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+
+  .sidebar-right {
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .tab-content {
+    width: 90%;
+    margin: 0 auto 15px auto;
   }
 }
 </style>
@@ -168,7 +188,7 @@ async function chargerCours(formation){
         a.href = './' + item.fichier;
         a.className = 'resource-button';
         a.setAttribute('download','');
-        a.textContent = item.nom; // JSON contient déjà l'icône
+        a.textContent = item.nom;
         li.appendChild(a);
         ul.appendChild(li);
       });
