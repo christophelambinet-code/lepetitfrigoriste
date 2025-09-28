@@ -74,7 +74,7 @@ header h1 {
   margin: 0;
 }
 
-/* Boutons et liens */
+/* Boutons */
 .tab-button, .return-button, .resource-button {
   width: 90%;
   max-width: 120px;
@@ -118,8 +118,12 @@ header h1 {
   gap: 5px;
 }
 
-/* Responsive */
+/* Responsive pour mobile */
 @media(max-width:768px) {
+  html, body {
+    height: auto;
+    overflow: auto;
+  }
   body {
     flex-direction: column;
   }
@@ -133,18 +137,21 @@ header h1 {
     overflow: visible;
     margin-bottom: 10px;
   }
-  .tab-content {
-    max-height: none;
-    overflow: visible;
-    width: 90%;
-  }
   .main {
     position: relative;
+    left: auto;
+    right: auto;
     margin: 10px 0;
   }
   .main img {
     max-width: 90%;
     max-height: 60vh;
+  }
+  .tab-content {
+    max-height: none;
+    overflow: visible;
+    width: 90%;
+    margin-bottom: 20px;
   }
 }
 </style>
@@ -175,7 +182,7 @@ async function chargerCours(formation){
         a.href = './' + item.fichier;
         a.className = 'resource-button';
         a.setAttribute('download','');
-        a.textContent = item.nom; // JSON contient déjà l’icône
+        a.textContent = item.nom; // JSON contient déjà l'icône
         li.appendChild(a);
         ul.appendChild(li);
       });
