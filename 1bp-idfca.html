@@ -8,12 +8,9 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
   font-family: 'Segoe UI', sans-serif;
   background-color: black;
   color: #e0f7ff;
-  overflow-y: auto; /* Permet le scroll sur mobile */
-  box-sizing: border-box;
 }
 
 /* Image centrale */
@@ -115,16 +112,17 @@ header h1 {
   gap: 5px;
 }
 
-/* Responsive */
+/* Responsive : version mobile */
 @media(max-width:768px) {
+  body {
+    overflow-y: auto; /* scroll général */
+  }
   .sidebar-left, .sidebar-right, .main {
-    position: relative;
+    position: relative; /* plus de fixed */
     width: 100%;
     margin: 0;
     padding: 10px;
-  }
-  .main {
-    margin-top: 10px;
+    height: auto; /* hauteur automatique */
   }
   .main img {
     max-width: 100%;
@@ -133,7 +131,7 @@ header h1 {
     margin: 0 auto;
   }
   .tab-content {
-    max-height: none; /* Plus de limitation de hauteur */
+    max-height: none; /* pas de limite */
   }
 }
 </style>
@@ -164,7 +162,7 @@ async function chargerCours(formation){
         a.href = './' + item.fichier;
         a.className = 'resource-button';
         a.setAttribute('download','');
-        a.textContent = item.nom; // icône gérée dans JSON
+        a.textContent = item.nom;
         li.appendChild(a);
         ul.appendChild(li);
       });
@@ -183,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </head>
 <body>
 
-<!-- Sidebar gauche : Accueil + onglets -->
 <div class="sidebar-left">
   <a href="index.html" class="return-button">← Accueil</a>
   <button class="tab-button" onclick="showTab('cours')">Cours</button>
@@ -191,12 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
   <button class="tab-button" onclick="showTab('videos')">Vidéos</button>
 </div>
 
-<!-- Image centrale -->
 <div class="main">
   <img src="./images/fond-1bp.jpg" alt="Fond 1BP">
 </div>
 
-<!-- Sidebar droite : cours -->
 <div class="sidebar-right">
   <div id="cours" class="tab-content active"></div>
   <div id="exercices" class="tab-content"></div>
