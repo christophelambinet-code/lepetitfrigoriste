@@ -11,16 +11,7 @@ html, body {
   font-family: 'Segoe UI', sans-serif;
   background-color: black;
   color: #e0f7ff;
-}
-
-/* Image centrale */
-.main {
-  margin-left: 18%;
-  margin-right: 18%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
+  overflow-x: hidden;
 }
 
 /* Sidebar gauche */
@@ -36,7 +27,7 @@ html, body {
   align-items: center;
   padding: 20px 5px;
   gap: 10px;
-  overflow-y: auto;
+  z-index: 10;
 }
 
 /* Sidebar droite */
@@ -55,6 +46,23 @@ html, body {
   overflow-y: auto;
 }
 
+/* Contenu central */
+.main {
+  margin-left: 18%;
+  margin-right: 18%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Image centrale */
+.main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Header */
 header {
   text-align: center;
@@ -70,7 +78,7 @@ header h1 {
   margin: 0;
 }
 
-/* Boutons et liens */
+/* Boutons */
 .tab-button, .return-button, .resource-button {
   width: 90%;
   max-width: 120px;
@@ -112,26 +120,32 @@ header h1 {
   gap: 5px;
 }
 
-/* Responsive : version mobile */
-@media(max-width:768px) {
-  body {
-    overflow-y: auto; /* scroll général */
+/* Responsive mobile */
+@media(max-width:768px){
+  html, body {
+    height: auto;
+    overflow-x: hidden;
   }
-  .sidebar-left, .sidebar-right, .main {
-    position: relative; /* plus de fixed */
+  .sidebar-left, .sidebar-right {
+    position: relative;
     width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .main {
     margin: 0;
-    padding: 10px;
-    height: auto; /* hauteur automatique */
+    width: 100%;
+    padding: 10px 0;
+    overflow-y: visible;
   }
   .main img {
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
-    display: block;
-    margin: 0 auto;
   }
   .tab-content {
-    max-height: none; /* pas de limite */
+    max-height: none;
   }
 }
 </style>
@@ -181,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </head>
 <body>
 
+<!-- Sidebar gauche -->
 <div class="sidebar-left">
   <a href="index.html" class="return-button">← Accueil</a>
   <button class="tab-button" onclick="showTab('cours')">Cours</button>
@@ -188,15 +203,17 @@ document.addEventListener('DOMContentLoaded', () => {
   <button class="tab-button" onclick="showTab('videos')">Vidéos</button>
 </div>
 
+<!-- Contenu central -->
 <div class="main">
+  <header><h1>1BP IDFCA</h1></header>
   <img src="./images/fond-1bp.jpg" alt="Fond 1BP">
-</div>
-
-<div class="sidebar-right">
   <div id="cours" class="tab-content active"></div>
   <div id="exercices" class="tab-content"></div>
   <div id="videos" class="tab-content"></div>
 </div>
+
+<!-- Sidebar droite -->
+<div class="sidebar-right"></div>
 
 </body>
 </html>
