@@ -1,148 +1,143 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>1BP IDFCA - Le Petit Frigoriste</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    html, body { 
-      margin: 0; 
-      padding: 0; 
-      height: 100%; 
-      font-family: 'Segoe UI', sans-serif; 
-      background-color: black; 
-      color: #e0f7ff; 
-    }
+<meta charset="UTF-8">
+<title>1BP IDFCA - Le Petit Frigoriste</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: black;
+  display: flex;
+  color: #e0f7ff;
+}
 
-    body { 
-      display: flex; 
-      flex-direction: row; 
-      background-image: url('images/fond-1bp.jpg'); 
-      background-repeat: no-repeat; 
-      background-position: center; 
-      background-size: contain; 
-    }
+/* Colonne gauche : bouton Accueil + onglets */
+.sidebar-left {
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 5px;
+  background-color: black;
+}
 
-    /* Colonne gauche : bouton Accueil + onglets */
-    .sidebar-left { 
-      width: 18%; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      gap: 10px; 
-      padding: 20px 5px; 
-      background-color: black; 
-    }
+/* Image centrée */
+.center-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-image img {
+  max-width: 100%;
+  height: auto;
+}
 
-    /* Colonne droite : cours sur fond noir */
-    .main { 
-      flex: 1; 
-      display: flex; 
-      flex-direction: column; 
-      padding: 20px; 
-      background-color: rgba(0,0,0,0.8); /* fond noir semi-transparent pour lisibilité */
-      max-height: 100vh;
-      overflow-y: auto; /* scroll si beaucoup de cours */
-    }
+/* Colonne droite : cours sur bande noire */
+.sidebar-right {
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 5px;
+  background-color: black;
+  overflow-y: auto;
+}
 
-    header { 
-      text-align: center; 
-      padding: 8px; 
-      margin-bottom: 10px; 
-    }
+/* Boutons et ressources */
+.tab-button, .return-button, .resource-button {
+  width: 80%;
+  padding: 6px 12px;
+  background: linear-gradient(145deg,#0077cc,#002244);
+  color: #e0f7ff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 8px #00aaff;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
 
-    .tab-button, .return-button, .resource-button { 
-      width: 80%; 
-      padding: 6px 12px; 
-      background: linear-gradient(145deg,#0077cc,#002244); 
-      color: #e0f7ff; 
-      border: none; 
-      border-radius: 6px; 
-      font-weight: bold; 
-      cursor: pointer; 
-      box-shadow: 0 0 8px #00aaff; 
-      text-align: center; 
-      transition: transform 0.2s, box-shadow 0.2s; 
-      text-decoration: none; 
-      font-size: 0.9em; 
-      margin-bottom: 5px;
-    }
+.tab-button:hover, .return-button:hover, .resource-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #00aaff;
+}
 
-    .tab-button:hover, .return-button:hover, .resource-button:hover { 
-      transform: scale(1.05); 
-      box-shadow: 0 0 16px #00aaff; 
-    }
+/* Conteneurs des cours */
+.tab-content { display: none; width: 100%; }
+.tab-content.active { display: block; }
 
-    .tab-content { 
-      display: none; 
-    }
-    .tab-content.active { 
-      display: block; 
-    }
+.tab-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
-    .tab-content ul { 
-      list-style: none; 
-      padding: 0; 
-      margin: 0; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 5px; 
-    }
+@media(max-width:768px) {
+  body { flex-direction: column; }
+  .sidebar-left, .sidebar-right { width: 100%; flex-direction: row; justify-content: center; flex-wrap: wrap; }
+  .center-image { width: 100%; margin: 10px 0; }
+}
+</style>
 
-    @media(max-width:768px) {
-      body { flex-direction: column; }
-      .sidebar-left { width: 100%; flex-direction: row; justify-content: center; flex-wrap: wrap; }
-      .main { width: 100%; padding: 10px; max-height: none; }
-    }
-  </style>
+<script>
+function showTab(tabId){
+  document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+}
 
-  <script>
-    function showTab(tabId){
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-    }
+async function chargerCours(formation){
+  try{
+    const response = await fetch('cours.json');
+    const data = await response.json();
+    if(!data[formation]) return;
 
-    async function chargerCours(formation){
-      try{
-        const response = await fetch('cours.json');
-        const data = await response.json();
-        if(!data[formation]) return;
-
-        ['cours','exercices','videos'].forEach(section => {
-          const container = document.getElementById(section);
-          container.innerHTML = '';
-          const items = data[formation][section];
-          if(items.length === 0){
-            container.innerHTML = '<p>Aucun '+section+' disponible pour le moment.</p>';
-            return;
-          }
-          const ul = document.createElement('ul');
-          items.forEach(item => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = item.fichier;
-            a.textContent = item.nom;
-            a.className = 'resource-button';
-            a.setAttribute('download','');
-            li.appendChild(a);
-            ul.appendChild(li);
-          });
-          container.appendChild(ul);
-        });
-      } catch(err){
-        console.error('Erreur lors du chargement des cours :', err);
+    ['cours','exercices','videos'].forEach(section => {
+      const container = document.getElementById(section);
+      container.innerHTML = '';
+      const items = data[formation][section];
+      if(items.length === 0){
+        container.innerHTML = '<p>Aucun '+section+' disponible pour le moment.</p>';
+        return;
       }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      chargerCours('1bp');
-      showTab('cours'); // affiche cours par défaut
+      const ul = document.createElement('ul');
+      items.forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = item.fichier;
+        a.textContent = item.nom;
+        a.className = 'resource-button';
+        a.setAttribute('download','');
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      container.appendChild(ul);
     });
-  </script>
+  } catch(err){
+    console.error('Erreur lors du chargement des cours :', err);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  chargerCours('1bp');
+  showTab('cours');
+});
+</script>
 </head>
 
 <body>
-  <!-- Colonne gauche : bouton Accueil tout en haut + onglets -->
+  <!-- Colonne gauche : Accueil puis onglets -->
   <div class="sidebar-left">
     <a href="index.html" class="return-button">← Accueil</a>
     <button class="tab-button" onclick="showTab('cours')">Cours</button>
@@ -150,9 +145,13 @@
     <button class="tab-button" onclick="showTab('videos')">Vidéos</button>
   </div>
 
-  <!-- Colonne droite : cours sur fond noir -->
-  <div class="main">
-    <header><h1>1BP IDFCA</h1></header>
+  <!-- Colonne centrale : image -->
+  <div class="center-image">
+    <img src="images/fond-1bp.jpg" alt="Fond 1BP">
+  </div>
+
+  <!-- Colonne droite : cours -->
+  <div class="sidebar-right">
     <div id="cours" class="tab-content active"></div>
     <div id="exercices" class="tab-content"></div>
     <div id="videos" class="tab-content"></div>
