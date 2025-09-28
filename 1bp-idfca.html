@@ -5,13 +5,13 @@
 <title>1BP IDFCA - Le Petit Frigoriste</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-html, body { 
-  margin: 0; 
-  padding: 0; 
-  height: 100%; 
-  font-family: 'Segoe UI', sans-serif; 
-  background-color: black; 
-  color: #e0f7ff; 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: black;
+  color: #e0f7ff;
   overflow: hidden;
   position: relative;
 }
@@ -120,6 +120,9 @@ header h1 {
 
 /* Responsive */
 @media(max-width:768px) {
+  body {
+    flex-direction: column;
+  }
   .sidebar-left, .sidebar-right {
     position: relative;
     width: 100%;
@@ -128,6 +131,7 @@ header h1 {
     flex-wrap: wrap;
     max-height: none;
     overflow: visible;
+    margin-bottom: 10px;
   }
   .tab-content {
     max-height: none;
@@ -136,10 +140,6 @@ header h1 {
   }
   .main {
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
     margin: 10px 0;
   }
   .main img {
@@ -175,7 +175,7 @@ async function chargerCours(formation){
         a.href = './' + item.fichier;
         a.className = 'resource-button';
         a.setAttribute('download','');
-        a.textContent = item.nom;
+        a.textContent = item.nom; // JSON contient déjà l’icône
         li.appendChild(a);
         ul.appendChild(li);
       });
