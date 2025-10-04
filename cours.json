@@ -31,10 +31,7 @@
       },
       {
         "nom": "❄️M3-Schema-Frigorifique-Symbole –1BP",
-        "fichier": "cours/1bp/1bpidfcaschemafrigosymb.pdf"
-
-
-        
+        "fichier": "cours/1bp/1bpidfcaschemafrigosymb.pdf"  
       },
       {"nom": "❄️M3-Le-Compresseur–1BP",
         "fichier": "cours/1bp/1bpidfcacompresseurs.pdf"
@@ -59,7 +56,7 @@
       },
       {"nom": "❄️M3-L-Evaporateur–1BP",
         "fichier": "cours/1bp/1bpidfcaevapo.pdf"
-      },
+      }
 
 
 
