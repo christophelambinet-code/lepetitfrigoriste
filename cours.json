@@ -32,7 +32,38 @@
       {
         "nom": "❄️M3-Schema-Frigorifique-Symbole –1BP",
         "fichier": "cours/1bp/1bpidfcaschemafrigosymb.pdf"
-      }
+
+
+        
+      },
+      {"nom": "❄️M3-Le-Compresseur–1BP",
+        "fichier": "cours/1bp/1bpidfcacompresseurs.pdf"
+      },
+      {"nom": "❄️M3-Le-Condenseur–1BP",
+        "fichier": "cours/1bp/1bpidfcacondenseur.pdf"
+      },
+      {"nom": "❄️M3-Le-reservoir-liquide–1BP",
+        "fichier": "cours/1bp/1bpidfcaresliquide.pdf"
+      },
+      {"nom": "❄️M3-Le-filtre-deshydrateur–1BP",
+        "fichier": "cours/1bp/1bpidfcafildesy.pdf"
+      },
+      {"nom": "❄️M3-Le-voyant-liquide–1BP",
+        "fichier": "cours/1bp/1bpidfcavliquide.pdf"
+      },
+      {"nom": "❄️M3-L-Electrovanne–1BP",
+        "fichier": "cours/1bp/1bpidfcaevr.pdf"
+      },
+      {"nom": "❄️M3-Le-Detendeur–1BP",
+        "fichier": "cours/1bp/1bpidfcadetendeur.pdf"
+      },
+      {"nom": "❄️M3-L-Evaporateur–1BP",
+        "fichier": "cours/1bp/1bpidfcaevapo.pdf"
+      },
+
+
+
+
     ],
     "exercices": [],
     "videos": []
